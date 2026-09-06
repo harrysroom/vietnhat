@@ -2686,14 +2686,35 @@ JAVASCRIPT (FIREBASE ANBINDUNG)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// HIER DEINE ECHTEN FIREBASE DATEN EINTRAGEN (aus der Firebase Konsole)
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
 const firebaseConfig = {
-    apiKey: "HIER_DEIN_API_KEY",
-    authDomain: "HIER_DEIN_AUTH_DOMAIN",
-    projectId: "HIER_DEIN_PROJECT_ID",
-    storageBucket: "HIER_DEIN_STORAGE_BUCKET",
-    messagingSenderId: "HIER_DEIN_MESSAGING_SENDER_ID",
-    appId: "HIER_DEIN_APP_ID"
+  apiKey: "AIzaSyCvgCIBR95WqTUyoyrCLyqakAv_cJyIAww",
+  authDomain: "viet-nhat-hochheim.firebaseapp.com",
+  projectId: "viet-nhat-hochheim",
+  storageBucket: "viet-nhat-hochheim.firebasestorage.app",
+  messagingSenderId: "1079525229056",
+  appId: "1:1079525229056:web:11bcb6c2d44f9c8612cee5",
+  measurementId: "G-JLGQPL26TF"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.db = db;
+window.collection = collection;
+window.getDocs = getDocs;
+window.doc = doc;
+window.setDoc = setDoc;
+window.deleteDoc = deleteDoc;
+
+loadAllDataFromFirebase();
+
+</script>
+
 };
 
 const app = initializeApp(firebaseConfig);
