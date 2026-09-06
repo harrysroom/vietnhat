@@ -1,0 +1,3092 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title id="pageTitle">Viet Nhat Hochheim | Asian Cuisine & Sushi Bar</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --dark-text: #1a1a1a;
+            --cream-bg: #f9f6f0;
+            --card-bg: #ffffff;
+            --card-border: #e6dec5;
+            --accent-gold: #b38b4d;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cream-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+
+        header {
+            background: rgba(249, 246, 240, 0.98);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-red);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        header.header-hidden {
+            transform: translateY(-100%);
+        }
+
+        /* LOGO IMAGE */
+
+        .header-logo-box {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #headerLogoImage {
+            width: 150px;
+            max-height: 75px;
+            object-fit: contain;
+            display: none;
+        }
+
+        .header-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .header-logo-text .v-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #111;
+            font-family: 'Georgia', serif;
+        }
+
+        .header-logo-text .n-text {
+            font-size: 22px;
+            color: var(--primary-red);
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            margin-top: -3px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-red);
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 85vh;
+
+            background:
+                linear-gradient(
+                    rgba(249,246,240,0.85),
+                    rgba(249,246,240,0.95)
+                ),
+                url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1920&q=80')
+                no-repeat center center/cover;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero-logo-box {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #heroLogoImage {
+            max-width: 650px;
+            width: 80%;
+            max-height: 300px;
+            object-fit: contain;
+            display: none;
+            margin: auto;
+        }
+
+        .hero-logo-text .hero-viet {
+            font-size: 3.8rem;
+            font-weight: bold;
+            color: #111;
+            font-family: 'Georgia', serif;
+            display: block;
+            line-height: 0.9;
+        }
+
+        .hero-logo-text .hero-nhat {
+            font-size: 4.2rem;
+            color: var(--primary-red);
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            display: block;
+            margin-top: -5px;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: #555;
+            max-width: 600px;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .btn-main {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .btn-main:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ANIMATION */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2.1rem;
+            margin-bottom: 35px;
+            font-family: 'Georgia', serif;
+            position: relative;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 45px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 8px auto 0;
+        }
+
+        /* REVIEWS */
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        .review-card i.fa-google {
+            color: #4285F4;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .review-card .platform {
+            font-weight: bold;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .review-card .score {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .review-card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            background: #111;
+            padding: 5px 14px;
+            border-radius: 20px;
+        }
+
+        /* MENU */
+
+        .menu-category {
+            margin-bottom: 35px;
+        }
+
+        .menu-category h3 {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 5px;
+            font-family: 'Georgia', serif;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .menu-item {
+            background: var(--card-bg);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .item-price {
+            color: var(--primary-red);
+        }
+
+        .item-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .options-box {
+            background: #f4efe4;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #444;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .delete-btn {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* ADMIN */
+
+        .admin-section {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 750px;
+            margin: 40px auto;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-section input,
+        .admin-section textarea,
+        .admin-section select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background: #fafafa;
+        }
+
+        .admin-category {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .admin-category h4 {
+            margin-bottom: 10px;
+            color: var(--primary-red);
+            font-size: 1.1rem;
+        }
+
+        /* CONTACT */
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 12px;
+        }
+
+        /* SOCIAL */
+
+        .footer-social-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .footer-social-section p {
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .social-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-bar a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            text-decoration: none;
+            color: white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .social-bar a.facebook {
+            background: #1877F2;
+        }
+
+        .social-bar a.instagram {
+            background:
+                radial-gradient(
+                    circle at 30% 107%,
+                    #fdf497 0%,
+                    #df4584 45%,
+                    #760a92 90%
+                );
+        }
+
+        .social-bar a.google {
+            background: #4285F4;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #111;
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 700px) {
+
+            header {
+                padding: 8px 12px;
+            }
+
+            #headerLogoImage {
+                width: 85px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 0.75rem;
+            }
+
+            .hero-logo-text .hero-viet {
+                font-size: 3rem;
+            }
+
+            .hero-logo-text .hero-nhat {
+                font-size: 3.5rem;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header id="mainHeader">
+
+    <a href="#home" class="header-logo-box">
+
+        <!-- LOGO IMAGE -->
+
+        <img
+            id="headerLogoImage"
+            src=""
+            alt="Viet Nhat Logo">
+
+        <!-- STANDARD TEXT -->
+
+        <div
+            class="header-logo-text"
+            id="headerLogoText">
+
+            <span class="v-text">
+                Viet
+            </span>
+
+            <span class="n-text">
+                Nhat
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a
+                    href="#home"
+                    id="navHome">
+                    Startseite
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#reviews"
+                    id="navReviews">
+                    Bewertungen
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#menu"
+                    id="navMenu">
+                    Speisekarte
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#kontakt"
+                    id="navContact">
+                    Kontakt
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section
+    id="home"
+    class="hero">
+
+
+    <div class="hero-logo-box">
+
+
+        <!-- GROSSES LOGO IMAGE -->
+
+        <img
+            id="heroLogoImage"
+            src=""
+            alt="Viet Nhat Logo">
+
+
+        <!-- STANDARD TEXT -->
+
+        <div
+            class="hero-logo-text"
+            id="heroLogoText">
+
+            <span
+                class="hero-viet"
+                id="heroViet">
+
+                Viet
+
+            </span>
+
+
+            <span
+                class="hero-nhat"
+                id="heroNhat">
+
+                Nhat
+
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <p id="heroSubtitle">
+
+        Asian Cuisine & Sushi Bar • Hochheim am Main
+
+    </p>
+
+
+    <a
+        href="#menu"
+        class="btn-main"
+        id="heroButton">
+
+        Zur Speisekarte
+
+    </a>
+
+
+</section>
+
+
+
+<!-- REVIEWS -->
+
+<section
+    id="reviews"
+    class="reveal">
+
+
+    <h2
+        class="section-title"
+        id="reviewsTitle">
+
+        Was Gäste sagen
+
+    </h2>
+
+
+    <div class="reviews-grid">
+
+
+        <div class="review-card">
+
+
+            <i class="fa-brands fa-google"></i>
+
+
+            <div
+                class="platform"
+                id="googlePlatform">
+
+                Google Bewertungen
+
+            </div>
+
+
+            <div
+                class="score"
+                id="googleScore">
+
+                4,7 / 5
+
+            </div>
+
+
+            <p
+                id="googleReviewsText"
+                style="color:#666; font-size:0.85rem;">
+
+                122 Bewertungen
+
+            </p>
+
+
+            <a
+                id="googleReviewLink"
+                href="https://www.google.com/search?q=viet+nhat+hochheim"
+                target="_blank">
+
+                Bewerten
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+
+        </div>
+
+
+
+        <div class="review-card">
+
+
+            <i
+                class="fa-solid fa-globe"
+                style="color:#64b5f6;">
+            </i>
+
+
+            <div
+                class="platform"
+                id="infobelPlatform">
+
+                Infobel
+
+            </div>
+
+
+            <div
+                class="score"
+                id="infobelScore">
+
+                4,7 / 5
+
+            </div>
+
+
+            <p
+                id="infobelReviewsText"
+                style="color:#666; font-size:0.85rem;">
+
+                63 Bewertungen
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- MENU -->
+
+<section
+    id="menu"
+    class="reveal">
+
+
+    <h2
+        class="section-title"
+        id="menuTitle">
+
+        Speisekarte & Optionen
+
+    </h2>
+
+
+
+    <div class="menu-category">
+
+
+        <h3 id="menuCategoryTitle">
+
+            Hauptgerichte & Spezialitäten
+
+        </h3>
+
+
+
+        <div
+            class="menu-items"
+            id="dynamicMenuContainer">
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ADMIN -->
+
+<section class="reveal">
+
+
+    <div class="admin-section">
+
+
+        <h3
+            style="
+                margin-bottom:12px;
+                font-size:1.5rem;
+            ">
+
+            <i class="fa-solid fa-lock"></i>
+
+        </h3>
+
+
+
+        <!-- LOGIN -->
+
+        <div
+            id="adminLoginBox"
+            class="admin-login">
+
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Passwort eingeben...">
+
+
+            <button
+                onclick="checkAdminPassword()"
+                class="btn-main"
+                style="
+                    width:100%;
+                    padding:8px;
+                    margin-top:5px;
+                ">
+
+                Anmelden
+
+            </button>
+
+
+            <p
+                id="errorMsg"
+                style="
+                    color:red;
+                    font-size:0.8rem;
+                    margin-top:5px;
+                    display:none;
+                ">
+
+                Falsches Passwort!
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- ADMIN PANEL -->
+
+        <div
+            id="adminPanelBox"
+            class="admin-panel">
+
+
+            <p
+                style="
+                    color:green;
+                    font-weight:bold;
+                    margin-bottom:12px;
+                ">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Admin aktiv
+
+            </p>
+
+
+
+            <!-- LOGO -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    🖼️ Logo bearbeiten
+                </h4>
+
+
+                <label>
+                    Logo hochladen:
+                </label>
+
+
+                <input
+                    type="file"
+                    id="logoUpload"
+                    accept="image/*">
+
+
+                <button
+                    onclick="saveLogo()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Logo speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- HERO IMAGE -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    🖼️ Hintergrundbild bearbeiten
+                </h4>
+
+
+                <input
+                    type="file"
+                    id="heroBackgroundUpload"
+                    accept="image/*">
+
+
+                <button
+                    onclick="saveHeroBackground()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Hintergrund speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- HERO TEXT -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    ✏️ Startseite bearbeiten
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="adminHeroViet"
+                    placeholder="Viet Text">
+
+
+                <input
+                    type="text"
+                    id="adminHeroNhat"
+                    placeholder="Nhat Text">
+
+
+                <input
+                    type="text"
+                    id="adminHeroSubtitle"
+                    placeholder="Untertitel">
+
+
+                <input
+                    type="text"
+                    id="adminHeroButton"
+                    placeholder="Button Text">
+
+
+                <button
+                    onclick="saveHeroText()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Texte speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    ✏️ Navigation bearbeiten
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="adminNavHome"
+                    placeholder="Startseite">
+
+
+                <input
+                    type="text"
+                    id="adminNavReviews"
+                    placeholder="Bewertungen">
+
+
+                <input
+                    type="text"
+                    id="adminNavMenu"
+                    placeholder="Speisekarte">
+
+
+                <input
+                    type="text"
+                    id="adminNavContact"
+                    placeholder="Kontakt">
+
+
+                <button
+                    onclick="saveNavigation()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Navigation speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- REVIEWS -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    ⭐ Bewertungen bearbeiten
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="adminReviewsTitle"
+                    placeholder="Überschrift">
+
+
+                <input
+                    type="text"
+                    id="adminGoogleScore"
+                    placeholder="Google Bewertung">
+
+
+                <input
+                    type="text"
+                    id="adminGoogleReviews"
+                    placeholder="Google Anzahl Bewertungen">
+
+
+                <input
+                    type="text"
+                    id="adminInfobelScore"
+                    placeholder="Infobel Bewertung">
+
+
+                <input
+                    type="text"
+                    id="adminInfobelReviews"
+                    placeholder="Infobel Anzahl Bewertungen">
+
+
+                <button
+                    onclick="saveReviews()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Bewertungen speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- MENU -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    🍣 Speisekarte bearbeiten
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="adminMenuTitle"
+                    placeholder="Speisekarten Überschrift">
+
+
+                <input
+                    type="text"
+                    id="adminMenuCategory"
+                    placeholder="Kategorie">
+
+
+                <button
+                    onclick="saveMenuTitles()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Überschriften speichern
+
+                </button>
+
+
+
+                <hr style="margin:20px 0;">
+
+
+                <strong>
+                    Neues Gericht hinzufügen:
+                </strong>
+
+
+                <input
+                    type="text"
+                    id="newDishName"
+                    placeholder="Name">
+
+
+                <input
+                    type="text"
+                    id="newDishPrice"
+                    placeholder="Preis">
+
+
+                <textarea
+                    id="newDishDesc"
+                    placeholder="Beschreibung"
+                    rows="2">
+                </textarea>
+
+
+                <textarea
+                    id="newDishOptions"
+                    placeholder="Optionen"
+                    rows="2">
+                </textarea>
+
+
+                <label>
+                    Bild hochladen:
+                </label>
+
+
+                <input
+                    type="file"
+                    id="adminImageUpload"
+                    accept="image/*">
+
+
+                <button
+                    onclick="saveNewDish()"
+                    class="btn-main"
+                    style="
+                        width:100%;
+                        margin-top:8px;
+                    ">
+
+                    Gericht speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    📞 Kontakt bearbeiten
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="adminAddress"
+                    placeholder="Adresse">
+
+
+                <input
+                    type="text"
+                    id="adminPhone"
+                    placeholder="Telefon">
+
+
+                <input
+                    type="email"
+                    id="adminEmail"
+                    placeholder="E-Mail">
+
+
+                <button
+                    onclick="saveContact()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Kontakt speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- SOCIAL MEDIA -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    🌐 Social Media bearbeiten
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="adminFacebook"
+                    placeholder="Facebook Link">
+
+
+                <input
+                    type="text"
+                    id="adminInstagram"
+                    placeholder="Instagram Link">
+
+
+                <input
+                    type="text"
+                    id="adminGoogleLink"
+                    placeholder="Google Link">
+
+
+                <button
+                    onclick="saveSocialMedia()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Social Media speichern
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="admin-category">
+
+
+                <h4>
+                    ✏️ Footer bearbeiten
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="adminFooter"
+                    placeholder="Footer Text">
+
+
+                <button
+                    onclick="saveFooter()"
+                    class="btn-main"
+                    style="width:100%;">
+
+                    Footer speichern
+
+                </button>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section
+    id="kontakt"
+    class="reveal">
+
+
+    <h2
+        class="section-title"
+        id="contactTitle">
+
+        Besuche & Kontaktiere Uns
+
+    </h2>
+
+
+
+    <div class="contact-info">
+
+
+        <div class="contact-item">
+
+
+            <i class="fa-solid fa-location-dot"></i>
+
+
+            <h3>
+                Adresse
+            </h3>
+
+
+            <p
+                id="addressText">
+
+                Mainzer Str. 5<br>
+                65239 Hochheim am Main
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="contact-item">
+
+
+            <i class="fa-solid fa-phone"></i>
+
+
+            <h3>
+                Telefon
+            </h3>
+
+
+            <p>
+
+
+                <a
+                    id="phoneText"
+                    href="tel:+4961469068763"
+                    style="
+                        color:var(--dark-text);
+                        text-decoration:none;
+                    ">
+
+                    +49 6146 9068763
+
+                </a>
+
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="contact-item">
+
+
+            <i class="fa-solid fa-envelope"></i>
+
+
+            <h3>
+                E-Mail
+            </h3>
+
+
+            <p>
+
+
+                <a
+                    id="emailText"
+                    href="mailto:vietnhathochheim@gmail.com"
+                    style="
+                        color:var(--dark-text);
+                        text-decoration:none;
+                    ">
+
+                    vietnhathochheim@gmail.com
+
+                </a>
+
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SOCIAL -->
+
+
+    <div class="footer-social-section">
+
+
+        <p>
+            Folge uns online:
+        </p>
+
+
+        <div class="social-bar">
+
+
+            <a
+                id="facebookLink"
+                href="https://www.facebook.com/"
+                target="_blank"
+                class="facebook">
+
+                <i class="fa-brands fa-facebook-f"></i>
+
+            </a>
+
+
+
+            <a
+                id="instagramLink"
+                href="https://www.instagram.com/"
+                target="_blank"
+                class="instagram">
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </a>
+
+
+
+            <a
+                id="googleLink"
+                href="https://www.google.com/"
+                target="_blank"
+                class="google">
+
+                <i class="fa-brands fa-google"></i>
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+
+<footer>
+
+
+    <p id="footerText">
+
+        © 2026 Viet Nhat Hochheim am Main.
+        Alle Rechte vorbehalten.
+
+    </p>
+
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+
+function checkAdminPassword() {
+
+    const pass =
+        document.getElementById(
+            'adminPassword'
+        ).value;
+
+
+    if (pass === '3636') {
+
+
+        document.getElementById(
+            'adminLoginBox'
+        ).style.display = 'none';
+
+
+        document.getElementById(
+            'adminPanelBox'
+        ).style.display = 'block';
+
+
+        loadAdminValues();
+
+
+    } else {
+
+
+        document.getElementById(
+            'errorMsg'
+        ).style.display = 'block';
+
+    }
+
+}
+
+
+
+/* =========================
+   LOGO
+========================= */
+
+
+function saveLogo() {
+
+
+    const fileInput =
+        document.getElementById(
+            'logoUpload'
+        );
+
+
+    if (
+        !fileInput.files ||
+        !fileInput.files[0]
+    ) {
+
+        alert(
+            'Bitte zuerst ein Logo auswählen!'
+        );
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e) {
+
+
+            localStorage.setItem(
+                'vietNhatLogo',
+                e.target.result
+            );
+
+
+            loadLogo();
+
+
+            alert(
+                'Logo erfolgreich gespeichert!'
+            );
+
+        };
+
+
+    reader.readAsDataURL(
+        fileInput.files[0]
+    );
+
+}
+
+
+
+function loadLogo() {
+
+
+    const logo =
+        localStorage.getItem(
+            'vietNhatLogo'
+        );
+
+
+    if (logo) {
+
+
+        document.getElementById(
+            'headerLogoImage'
+        ).src = logo;
+
+
+        document.getElementById(
+            'heroLogoImage'
+        ).src = logo;
+
+
+        document.getElementById(
+            'headerLogoImage'
+        ).style.display = 'block';
+
+
+        document.getElementById(
+            'heroLogoImage'
+        ).style.display = 'block';
+
+
+        document.getElementById(
+            'headerLogoText'
+        ).style.display = 'none';
+
+
+        document.getElementById(
+            'heroLogoText'
+        ).style.display = 'none';
+
+    }
+
+}
+
+
+
+/* =========================
+   HERO BACKGROUND
+========================= */
+
+
+function saveHeroBackground() {
+
+
+    const fileInput =
+        document.getElementById(
+            'heroBackgroundUpload'
+        );
+
+
+    if (
+        !fileInput.files ||
+        !fileInput.files[0]
+    ) {
+
+        alert(
+            'Bitte Bild auswählen!'
+        );
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e) {
+
+
+            localStorage.setItem(
+                'vietNhatHeroBackground',
+                e.target.result
+            );
+
+
+            loadHeroBackground();
+
+
+            alert(
+                'Hintergrund gespeichert!'
+            );
+
+        };
+
+
+    reader.readAsDataURL(
+        fileInput.files[0]
+    );
+
+}
+
+
+
+function loadHeroBackground() {
+
+
+    const image =
+        localStorage.getItem(
+            'vietNhatHeroBackground'
+        );
+
+
+    if (image) {
+
+
+        document.getElementById(
+            'home'
+        ).style.backgroundImage =
+            `
+            linear-gradient(
+                rgba(249,246,240,0.85),
+                rgba(249,246,240,0.95)
+            ),
+            url('${image}')
+            `;
+
+    }
+
+}
+
+
+
+/* =========================
+   HERO TEXT
+========================= */
+
+
+function saveHeroText() {
+
+
+    const data = {
+
+
+        viet:
+            document.getElementById(
+                'adminHeroViet'
+            ).value,
+
+
+        nhat:
+            document.getElementById(
+                'adminHeroNhat'
+            ).value,
+
+
+        subtitle:
+            document.getElementById(
+                'adminHeroSubtitle'
+            ).value,
+
+
+        button:
+            document.getElementById(
+                'adminHeroButton'
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        'vietNhatHeroText',
+        JSON.stringify(data)
+    );
+
+
+    loadHeroText();
+
+
+    alert(
+        'Startseite gespeichert!'
+    );
+
+}
+
+
+
+function loadHeroText() {
+
+
+    const data =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatHeroText'
+            )
+        );
+
+
+    if (!data) return;
+
+
+    if (data.viet)
+        document.getElementById(
+            'heroViet'
+        ).textContent =
+            data.viet;
+
+
+    if (data.nhat)
+        document.getElementById(
+            'heroNhat'
+        ).textContent =
+            data.nhat;
+
+
+    if (data.subtitle)
+        document.getElementById(
+            'heroSubtitle'
+        ).textContent =
+            data.subtitle;
+
+
+    if (data.button)
+        document.getElementById(
+            'heroButton'
+        ).textContent =
+            data.button;
+
+}
+
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+
+function saveNavigation() {
+
+
+    const data = {
+
+
+        home:
+            document.getElementById(
+                'adminNavHome'
+            ).value,
+
+
+        reviews:
+            document.getElementById(
+                'adminNavReviews'
+            ).value,
+
+
+        menu:
+            document.getElementById(
+                'adminNavMenu'
+            ).value,
+
+
+        contact:
+            document.getElementById(
+                'adminNavContact'
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        'vietNhatNavigation',
+        JSON.stringify(data)
+    );
+
+
+    loadNavigation();
+
+
+    alert(
+        'Navigation gespeichert!'
+    );
+
+}
+
+
+
+function loadNavigation() {
+
+
+    const data =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatNavigation'
+            )
+        );
+
+
+    if (!data) return;
+
+
+    if (data.home)
+        document.getElementById(
+            'navHome'
+        ).textContent =
+            data.home;
+
+
+    if (data.reviews)
+        document.getElementById(
+            'navReviews'
+        ).textContent =
+            data.reviews;
+
+
+    if (data.menu)
+        document.getElementById(
+            'navMenu'
+        ).textContent =
+            data.menu;
+
+
+    if (data.contact)
+        document.getElementById(
+            'navContact'
+        ).textContent =
+            data.contact;
+
+}
+
+
+
+/* =========================
+   REVIEWS
+========================= */
+
+
+function saveReviews() {
+
+
+    const data = {
+
+
+        title:
+            document.getElementById(
+                'adminReviewsTitle'
+            ).value,
+
+
+        googleScore:
+            document.getElementById(
+                'adminGoogleScore'
+            ).value,
+
+
+        googleReviews:
+            document.getElementById(
+                'adminGoogleReviews'
+            ).value,
+
+
+        infobelScore:
+            document.getElementById(
+                'adminInfobelScore'
+            ).value,
+
+
+        infobelReviews:
+            document.getElementById(
+                'adminInfobelReviews'
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        'vietNhatReviews',
+        JSON.stringify(data)
+    );
+
+
+    loadReviews();
+
+
+    alert(
+        'Bewertungen gespeichert!'
+    );
+
+}
+
+
+
+function loadReviews() {
+
+
+    const data =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatReviews'
+            )
+        );
+
+
+    if (!data) return;
+
+
+    if (data.title)
+        document.getElementById(
+            'reviewsTitle'
+        ).textContent =
+            data.title;
+
+
+    if (data.googleScore)
+        document.getElementById(
+            'googleScore'
+        ).textContent =
+            data.googleScore;
+
+
+    if (data.googleReviews)
+        document.getElementById(
+            'googleReviewsText'
+        ).textContent =
+            data.googleReviews;
+
+
+    if (data.infobelScore)
+        document.getElementById(
+            'infobelScore'
+        ).textContent =
+            data.infobelScore;
+
+
+    if (data.infobelReviews)
+        document.getElementById(
+            'infobelReviewsText'
+        ).textContent =
+            data.infobelReviews;
+
+}
+
+
+
+/* =========================
+   MENU TITLES
+========================= */
+
+
+function saveMenuTitles() {
+
+
+    const data = {
+
+
+        title:
+            document.getElementById(
+                'adminMenuTitle'
+            ).value,
+
+
+        category:
+            document.getElementById(
+                'adminMenuCategory'
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        'vietNhatMenuTitles',
+        JSON.stringify(data)
+    );
+
+
+    loadMenuTitles();
+
+
+    alert(
+        'Speisekarte gespeichert!'
+    );
+
+}
+
+
+
+function loadMenuTitles() {
+
+
+    const data =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatMenuTitles'
+            )
+        );
+
+
+    if (!data) return;
+
+
+    if (data.title)
+        document.getElementById(
+            'menuTitle'
+        ).textContent =
+            data.title;
+
+
+    if (data.category)
+        document.getElementById(
+            'menuCategoryTitle'
+        ).textContent =
+            data.category;
+
+}
+
+
+
+/* =========================
+   DISHES
+========================= */
+
+
+function saveNewDish() {
+
+
+    const name =
+        document.getElementById(
+            'newDishName'
+        ).value;
+
+
+    const price =
+        document.getElementById(
+            'newDishPrice'
+        ).value;
+
+
+    const desc =
+        document.getElementById(
+            'newDishDesc'
+        ).value;
+
+
+    const options =
+        document.getElementById(
+            'newDishOptions'
+        ).value;
+
+
+    const fileInput =
+        document.getElementById(
+            'adminImageUpload'
+        );
+
+
+    if (!name || !price) {
+
+        alert(
+            'Bitte Name und Preis eingeben!'
+        );
+
+        return;
+
+    }
+
+
+    if (
+        fileInput.files &&
+        fileInput.files[0]
+    ) {
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(e) {
+
+
+                storeDishData(
+                    name,
+                    price,
+                    desc,
+                    options,
+                    e.target.result
+                );
+
+            };
+
+
+        reader.readAsDataURL(
+            fileInput.files[0]
+        );
+
+
+    } else {
+
+
+        storeDishData(
+            name,
+            price,
+            desc,
+            options,
+            ''
+        );
+
+    }
+
+}
+
+
+
+function storeDishData(
+    name,
+    price,
+    desc,
+    options,
+    imageSrc
+) {
+
+
+    let dishes =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatDishes'
+            )
+        ) || [];
+
+
+    dishes.push({
+
+
+        id: Date.now(),
+
+
+        name,
+
+
+        price,
+
+
+        desc,
+
+
+        options,
+
+
+        imageSrc
+
+
+    });
+
+
+    localStorage.setItem(
+        'vietNhatDishes',
+        JSON.stringify(dishes)
+    );
+
+
+    alert(
+        'Gericht erfolgreich gespeichert!'
+    );
+
+
+    document.getElementById(
+        'newDishName'
+    ).value = '';
+
+
+    document.getElementById(
+        'newDishPrice'
+    ).value = '';
+
+
+    document.getElementById(
+        'newDishDesc'
+    ).value = '';
+
+
+    document.getElementById(
+        'newDishOptions'
+    ).value = '';
+
+
+    document.getElementById(
+        'adminImageUpload'
+    ).value = '';
+
+
+    loadDishes();
+
+}
+
+
+
+function loadDishes() {
+
+
+    const container =
+        document.getElementById(
+            'dynamicMenuContainer'
+        );
+
+
+    let dishes =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatDishes'
+            )
+        ) || [];
+
+
+    let html = `
+
+
+        <div class="menu-item">
+
+
+            <div>
+
+
+                <div class="item-header">
+
+
+                    <span>
+                        Tofu Veggie Stir-Fry
+                    </span>
+
+
+                    <span class="item-price">
+                        13,90 €
+                    </span>
+
+
+                </div>
+
+
+                <div class="item-desc">
+
+                    Gebratener Tofu mit
+                    frischem Saisongemüse
+                    in aromatischer Soße,
+                    dazu Duftreis.
+
+                </div>
+
+
+                <div class="options-box">
+
+                    <strong>
+                        Optionen:
+                    </strong>
+
+                    Extra Tofu (+3,00 €),
+                    Scharf,
+                    Ohne Koriander
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    dishes.forEach(
+        dish => {
+
+
+            html += `
+
+
+                <div class="menu-item">
+
+
+                    <div>
+
+
+                        ${
+
+                            dish.imageSrc
+
+                            ?
+
+                            `<img
+                                src="${dish.imageSrc}"
+                                alt="${dish.name}">`
+
+                            :
+
+                            ''
+
+                        }
+
+
+                        <div class="item-header">
+
+
+                            <span>
+
+                                ${dish.name}
+
+                            </span>
+
+
+                            <span class="item-price">
+
+                                ${dish.price}
+
+                            </span>
+
+
+                        </div>
+
+
+                        <div class="item-desc">
+
+                            ${dish.desc}
+
+                        </div>
+
+
+                        ${
+
+                            dish.options
+
+                            ?
+
+                            `
+
+                            <div class="options-box">
+
+                                <strong>
+                                    Optionen:
+                                </strong>
+
+                                ${dish.options}
+
+                            </div>
+
+                            `
+
+                            :
+
+                            ''
+
+                        }
+
+
+                    </div>
+
+
+                    <button
+                        class="delete-btn"
+                        onclick="deleteDish(${dish.id})">
+
+                        Löschen
+
+                    </button>
+
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML = html;
+
+}
+
+
+
+function deleteDish(id) {
+
+
+    let dishes =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatDishes'
+            )
+        ) || [];
+
+
+    dishes =
+        dishes.filter(
+            dish =>
+                dish.id !== id
+        );
+
+
+    localStorage.setItem(
+        'vietNhatDishes',
+        JSON.stringify(dishes)
+    );
+
+
+    loadDishes();
+
+}
+
+
+
+/* =========================
+   CONTACT
+========================= */
+
+
+function saveContact() {
+
+
+    const data = {
+
+
+        address:
+            document.getElementById(
+                'adminAddress'
+            ).value,
+
+
+        phone:
+            document.getElementById(
+                'adminPhone'
+            ).value,
+
+
+        email:
+            document.getElementById(
+                'adminEmail'
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        'vietNhatContact',
+        JSON.stringify(data)
+    );
+
+
+    loadContact();
+
+
+    alert(
+        'Kontakt gespeichert!'
+    );
+
+}
+
+
+
+function loadContact() {
+
+
+    const data =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatContact'
+            )
+        );
+
+
+    if (!data) return;
+
+
+    if (data.address) {
+
+
+        document.getElementById(
+            'addressText'
+        ).innerHTML =
+            data.address.replace(
+                /\n/g,
+                '<br>'
+            );
+
+    }
+
+
+    if (data.phone) {
+
+
+        const phone =
+            document.getElementById(
+                'phoneText'
+            );
+
+
+        phone.textContent =
+            data.phone;
+
+
+        phone.href =
+            'tel:' +
+            data.phone.replace(
+                /[^0-9+]/g,
+                ''
+            );
+
+    }
+
+
+    if (data.email) {
+
+
+        const email =
+            document.getElementById(
+                'emailText'
+            );
+
+
+        email.textContent =
+            data.email;
+
+
+        email.href =
+            'mailto:' +
+            data.email;
+
+    }
+
+}
+
+
+
+/* =========================
+   SOCIAL MEDIA
+========================= */
+
+
+function saveSocialMedia() {
+
+
+    const data = {
+
+
+        facebook:
+            document.getElementById(
+                'adminFacebook'
+            ).value,
+
+
+        instagram:
+            document.getElementById(
+                'adminInstagram'
+            ).value,
+
+
+        google:
+            document.getElementById(
+                'adminGoogleLink'
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        'vietNhatSocial',
+        JSON.stringify(data)
+    );
+
+
+    loadSocialMedia();
+
+
+    alert(
+        'Social Media gespeichert!'
+    );
+
+}
+
+
+
+function loadSocialMedia() {
+
+
+    const data =
+        JSON.parse(
+            localStorage.getItem(
+                'vietNhatSocial'
+            )
+        );
+
+
+    if (!data) return;
+
+
+    if (data.facebook)
+        document.getElementById(
+            'facebookLink'
+        ).href =
+            data.facebook;
+
+
+    if (data.instagram)
+        document.getElementById(
+            'instagramLink'
+        ).href =
+            data.instagram;
+
+
+    if (data.google)
+        document.getElementById(
+            'googleLink'
+        ).href =
+            data.google;
+
+}
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+
+function saveFooter() {
+
+
+    const text =
+        document.getElementById(
+            'adminFooter'
+        ).value;
+
+
+    localStorage.setItem(
+        'vietNhatFooter',
+        text
+    );
+
+
+    loadFooter();
+
+
+    alert(
+        'Footer gespeichert!'
+    );
+
+}
+
+
+
+function loadFooter() {
+
+
+    const text =
+        localStorage.getItem(
+            'vietNhatFooter'
+        );
+
+
+    if (text) {
+
+
+        document.getElementById(
+            'footerText'
+        ).textContent =
+            text;
+
+    }
+
+}
+
+
+
+/* =========================
+   ADMIN VALUES
+========================= */
+
+
+function loadAdminValues() {
+
+
+    document.getElementById(
+        'adminHeroViet'
+    ).value =
+        document.getElementById(
+            'heroViet'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminHeroNhat'
+    ).value =
+        document.getElementById(
+            'heroNhat'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminHeroSubtitle'
+    ).value =
+        document.getElementById(
+            'heroSubtitle'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminHeroButton'
+    ).value =
+        document.getElementById(
+            'heroButton'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminNavHome'
+    ).value =
+        document.getElementById(
+            'navHome'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminNavReviews'
+    ).value =
+        document.getElementById(
+            'navReviews'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminNavMenu'
+    ).value =
+        document.getElementById(
+            'navMenu'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminNavContact'
+    ).value =
+        document.getElementById(
+            'navContact'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminReviewsTitle'
+    ).value =
+        document.getElementById(
+            'reviewsTitle'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminGoogleScore'
+    ).value =
+        document.getElementById(
+            'googleScore'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminGoogleReviews'
+    ).value =
+        document.getElementById(
+            'googleReviewsText'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminInfobelScore'
+    ).value =
+        document.getElementById(
+            'infobelScore'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminInfobelReviews'
+    ).value =
+        document.getElementById(
+            'infobelReviewsText'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminMenuTitle'
+    ).value =
+        document.getElementById(
+            'menuTitle'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminMenuCategory'
+    ).value =
+        document.getElementById(
+            'menuCategoryTitle'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminAddress'
+    ).value =
+        document.getElementById(
+            'addressText'
+        ).innerText;
+
+
+    document.getElementById(
+        'adminPhone'
+    ).value =
+        document.getElementById(
+            'phoneText'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminEmail'
+    ).value =
+        document.getElementById(
+            'emailText'
+        ).textContent;
+
+
+    document.getElementById(
+        'adminFooter'
+    ).value =
+        document.getElementById(
+            'footerText'
+        ).textContent;
+
+}
+
+
+
+/* =========================
+   SCROLL
+========================= */
+
+
+let lastScrollTop = 0;
+
+
+window.addEventListener(
+    'scroll',
+    function() {
+
+
+        const header =
+            document.getElementById(
+                'mainHeader'
+            );
+
+
+        let scrollTop =
+            window.pageYOffset ||
+            document.documentElement.scrollTop;
+
+
+        if (
+            scrollTop > lastScrollTop &&
+            scrollTop > 100
+        ) {
+
+
+            header.classList.add(
+                'header-hidden'
+            );
+
+
+        } else {
+
+
+            header.classList.remove(
+                'header-hidden'
+            );
+
+        }
+
+
+        lastScrollTop = scrollTop;
+
+
+        const reveals =
+            document.querySelectorAll(
+                '.reveal'
+            );
+
+
+        for (
+            let i = 0;
+            i < reveals.length;
+            i++
+        ) {
+
+
+            let windowHeight =
+                window.innerHeight;
+
+
+            let elementTop =
+                reveals[i]
+                .getBoundingClientRect()
+                .top;
+
+
+            if (
+                elementTop <
+                windowHeight - 80
+            ) {
+
+
+                reveals[i]
+                    .classList
+                    .add('active');
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =========================
+   LOAD EVERYTHING
+========================= */
+
+
+loadLogo();
+
+loadHeroBackground();
+
+loadHeroText();
+
+loadNavigation();
+
+loadReviews();
+
+loadMenuTitles();
+
+loadDishes();
+
+loadContact();
+
+loadSocialMedia();
+
+loadFooter();
+
+
+</script>
+
+
+</body>
+</html>
